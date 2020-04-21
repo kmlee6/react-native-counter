@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import CounterGroup from "./components/CounterGroup";
+import CounterGroup from "./components/CounterGroup.jsx";
 
 function App() {
   return (

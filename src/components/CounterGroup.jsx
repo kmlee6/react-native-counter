@@ -8,8 +8,15 @@ class CounterGroup extends Component {
 
     this.state = {
       size: INIT_COUNTERS_SIZE,
+      sum: 0,
     };
   }
+
+  handleNumberUpdate = (diff) => {
+    this.setState((state) => ({
+      sum: state.sum + diff,
+    }));
+  };
 
   initArray = (size) => {
     const array = Array.from(Array(size).keys());
@@ -24,14 +31,23 @@ class CounterGroup extends Component {
   };
 
   render() {
-    let counters = this.initArray(this.state.size);
+    const { size, sum } = this.state;
+    let counters = this.initArray(size);
     return (
       <div>
-        <form>
-          <input onChange={this.onChange} type="text" value={this.state.size} />
-        </form>
-        {counters.map((counter) => (
-          <Counter />
+        <fieldset>
+          <p>sum of all counters value is {sum}</p>
+
+          <form>
+            <input onChange={this.onChange} type="text" value={size} />
+          </form>
+        </fieldset>
+        {counters.map((counter, index) => (
+          <Counter
+            key={counter}
+            index={index}
+            onCalculate={this.handleNumberUpdate}
+          />
         ))}
       </div>
     );
