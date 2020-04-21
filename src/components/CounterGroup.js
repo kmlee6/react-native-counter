@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import Counter from "./Counter";
+import { INIT_COUNTERS_SIZE } from "../constants/constants";
 
 class CounterGroup extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      size: 2,
+      size: INIT_COUNTERS_SIZE,
     };
   }
 
